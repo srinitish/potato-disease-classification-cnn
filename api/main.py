@@ -7,7 +7,9 @@ import tensorflow as tf
 
 app = FastAPI()
 
-MODEL = tf.keras.models.load_model("../models/1.keras")
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL = tf.keras.models.load_model(os.path.join(BASE_DIR, "../models/1.keras"))
 CLASS_NAMES = ['Potato___Early_blight', 'Potato___Late_blight', 'Potato___healthy']
 
 @app.get("/ping")
